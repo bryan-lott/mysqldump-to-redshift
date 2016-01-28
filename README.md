@@ -22,6 +22,8 @@ Copy the prebuilt jar file in target to the target machine and execute according
 
 Once the script finishes, use s3cmd to copy the file to an S3 bucket.  Once that's done, use a version of the following command to load it into your table.
 
+    COPY [table name] from 's3://[bucket]/[file path]' credentials 'aws_access_key_id=[key];aws_secret_access_key=[secret key]' delimiter ',' null as '\000';
+
 ## Options
 
 mysql dump file - The "input" file for this script.  Should have insert statements.
