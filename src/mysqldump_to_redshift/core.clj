@@ -1,5 +1,5 @@
 (ns mysqldump-to-redshift.core
-  (:require [clojure.string :as s :refer [starts-with? join replace]])
+  (:require [clojure.string :as s])
   (:gen-class))
 
 (defn stream-lines-out!
