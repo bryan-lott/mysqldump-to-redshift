@@ -1,0 +1,17 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	0	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.9~svn20110310	//
+mysqldump-to-redshift	/home/blott/code/mysqldump-to-redshift/README.md	/^# mysqldump-to-redshift$/;"	function	line:1
+Installation	/home/blott/code/mysqldump-to-redshift/README.md	/^## Installation$/;"	function	line:5
+Usage	/home/blott/code/mysqldump-to-redshift/README.md	/^## Usage$/;"	function	line:9
+Options	/home/blott/code/mysqldump-to-redshift/README.md	/^## Options$/;"	function	line:15
+Examples	/home/blott/code/mysqldump-to-redshift/README.md	/^## Examples$/;"	function	line:19
+Bugs	/home/blott/code/mysqldump-to-redshift/README.md	/^### Bugs$/;"	function	line:23
+Any Other Sections	/home/blott/code/mysqldump-to-redshift/README.md	/^### Any Other Sections$/;"	function	line:27
+That You Think	/home/blott/code/mysqldump-to-redshift/README.md	/^### That You Think$/;"	function	line:28
+Might be Useful	/home/blott/code/mysqldump-to-redshift/README.md	/^### Might be Useful$/;"	function	line:29
+License	/home/blott/code/mysqldump-to-redshift/README.md	/^## License$/;"	function	line:31
+Introduction to mysqldump-to-redshift	/home/blott/code/mysqldump-to-redshift/doc/intro.md	/^# Introduction to mysqldump-to-redshift$/;"	function	line:1
