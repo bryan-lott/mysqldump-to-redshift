@@ -1,4 +1,4 @@
-(defproject mysqldump-to-redshift "0.1.0-SNAPSHOT"
+(defproject mysqldump-to-redshift "0.3.0"
   :description "Convert a mysqldump file to a Redshift datafile"
   :license {:name "Eclipse Public License"
             :url "http://www.eclipse.org/legal/epl-v10.html"}
