@@ -15,7 +15,7 @@
       (s/replace "'", "")
       (s/replace #",(?=([^\"']*[\"'][^\"']*[\"'])*[^\"']*$)", (str \tab))))
 
-(def data-re (re-pattern "\\((.*?)\\)"))
+(def data-re (re-pattern "\\((.*?)\\)[,;]"))
 
 (defn extract-values [s]
   "Extract anything between parentheses (non-greedy)."
