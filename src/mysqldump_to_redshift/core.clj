@@ -1,6 +1,11 @@
 (ns mysqldump-to-redshift.core
-  (:require [clojure.string :as s])
+  (:require [clojure.string :as s]
+            [clojure.java.io :as io]
+            [progress.file :as progress])
   (:gen-class))
+
+(defn file-size [filename]
+  (.length (io/file filename)))
 
 (defn stream-lines-out!
   "Lazy, streams the lines to the provided filename."
@@ -25,11 +30,15 @@
 (defn -main
   "Given a in-file and out-file, change mysqldump style inserts to redshift-compatible data."
   [& args]
-  (with-open [r (clojure.java.io/reader (first args))
-              w (clojure.java.io/writer (second args))]
-    (->> (line-seq r)
-         (filter #(s/starts-with? % "INSERT INTO `file` VALUES "))
-         (pmap extract-values)
-         (flatten)
-         (pmap fix-format)
-         (stream-lines-out! w))))
+  (let [in (first args)
+        out (second args)
+        size (file-size in)]
+    (progress/with-file-progress out :filesize size
+      (with-open [r (clojure.java.io/reader in)
+                  w (clojure.java.io/writer out)]
+        (->> (line-seq r)
+             (filter #(s/starts-with? % "INSERT INTO `file` VALUES "))
+             (pmap extract-values)
+             (flatten)
+             (pmap fix-format)
+             (stream-lines-out! w))))))
