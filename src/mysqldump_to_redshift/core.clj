@@ -8,9 +8,12 @@
   (doseq [line out-lines] (.write w (str line "\n"))))
 
 (defn fix-format [s]
-  "Replace nulls w/ \000 and remove single quotes."
-  (s/replace (s/replace s ",NULL," ",\\000,")
-             "'", ""))
+  "Replace nulls w/ \000 and remove single quotes.
+  Change commas outside double quotes to tabs."
+  (-> s
+      (s/replace "NULL" "")
+      (s/replace "'", "")
+      (s/replace #",(?=([^\"']*[\"'][^\"']*[\"'])*[^\"']*$)", (str \tab))))
 
 (def data-re (re-pattern "\\((.*?)\\)"))
 
