@@ -6,3 +6,5 @@
   :main ^:skip-aot mysqldump-to-redshift.core
   :target-path "target/%s"
   :profiles {:uberjar {:aot :all}})
+  :profiles {:uberjar {:aot :all}
+             :user {:plugins [[com.jakemccrary/lein-test-refresh "0.12.0"]]}}
