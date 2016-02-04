@@ -13,10 +13,10 @@
   (doseq [line out-lines] (.write w (str line "\n"))))
 
 (defn fix-format [s]
-  "Replace nulls w/ \000 and remove single quotes.
+  "Remove nulls outside quotes and remove single quotes.
   Change commas outside double quotes to tabs."
   (-> s
-      (s/replace ",NULL," ",,")
+      (s/replace #"NULL(?=([^\"']*[\"'][^\"']*[\"'])*[^\"']*$)" "")
       (s/replace "'", "")
       (s/replace #",(?=([^\"']*[\"'][^\"']*[\"'])*[^\"']*$)", (str \tab))))
 
