@@ -29,13 +29,17 @@
     (is (= (fix-format "test,NULL")
            "test\t")))
 
+  (testing "fix-format backslash quotes to regular quotes"
+    (is (= (fix-format "testing,\\\"stuff in quotes\\\"")
+           "testing\t\"stuff in quotes\"")))
+
   (testing "fix-format all cases together"
     (is (= (fix-format "NULL,1234,NULL,NULL,\", in quotes\",5678,NULL,NULL,\"another , in quotes\",9012,NULL")
            "\t1234\t\t\t\", in quotes\"\t5678\t\t\t\"another , in quotes\"\t9012\t"))))
 
 (deftest extract-values-test
   (testing "extract-values parens in quotes"
-    (is (= (extract-values "(\"(a)\"),(b, c, d);")
+    (is (= (extract-values "insert into stuff values (\"(a)\"),(b, c, d);")
            ["\"(a)\"" "b, c, d"]))))
 
 

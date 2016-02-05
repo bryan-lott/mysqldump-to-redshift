@@ -18,9 +18,10 @@
   (-> s
       (s/replace #"NULL(?=([^\"']*[\"'][^\"']*[\"'])*[^\"']*$)" "")
       (s/replace "'", "")
-      (s/replace #",(?=([^\"']*[\"'][^\"']*[\"'])*[^\"']*$)", (str \tab))))
+      (s/replace #",(?=([^\"']*[\"'][^\"']*[\"'])*[^\"']*$)", (str \tab))
+      (s/replace "\\\"" "\"")))
 
-(def data-re (re-pattern "\\((.*?)\\)[,;]"))
+(def data-re #"\((.*?)\)[,;]")
 
 (defn extract-values [s]
   "Extract anything between parentheses (non-greedy)."
