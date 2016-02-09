@@ -1,4 +1,4 @@
-# mysqldump-to-redshift 0.3.0
+# mysqldump-to-redshift 0.3.1
 
 A simple script to convert from a mysqldump file of a single table to an "importable" Redshift data file.
 
