@@ -4,7 +4,9 @@
             [progress.file :as progress])
   (:gen-class))
 
-(defn file-size [filename]
+(defn file-size
+  "Given a filename, determine the file size."
+  [filename]
   (.length (io/file filename)))
 
 (defn stream-lines-out!
@@ -12,24 +14,24 @@
   [^java.io.BufferedWriter w out-lines]
   (doseq [line out-lines] (.write w (str line "\n"))))
 
-(defn fix-format [s]
+(defn fix-format
   "Remove nulls outside quotes and remove single quotes.
   Change commas outside double quotes to tabs."
+  [s]
   (-> s
       (s/replace #"NULL(?=([^\"']*[\"'][^\"']*[\"'])*[^\"']*$)" "")
       (s/replace "'", "")
       (s/replace #",(?=([^\"']*[\"'][^\"']*[\"'])*[^\"']*$)", (str \tab))
       (s/replace "\\\"" "\"")))
 
-(def data-re #"\((.*?)\)[,;]")
-
-(defn extract-values [s]
+(defn extract-values
   "Extract anything between parentheses (non-greedy)."
-  (map second (re-seq data-re s)))
+  [s]
+  (map second (re-seq #"\((.*?)\)[,;]" s)))
 
 
 (defn -main
-  "Given a in-file and out-file, change mysqldump style inserts to redshift-compatible data."
+  "Given an in-file and out-file, change mysqldump style inserts to redshift-compatible data."
   [& args]
   (let [in (first args)
         out (second args)
@@ -38,7 +40,7 @@
       (with-open [r (clojure.java.io/reader in)
                   w (clojure.java.io/writer out)]
         (->> (line-seq r)
-             (filter #(s/starts-with? % "INSERT INTO `file` VALUES "))
+             (filter #(s/starts-with? % "INSERT INTO "))
              (pmap extract-values)
              (flatten)
              (pmap fix-format)

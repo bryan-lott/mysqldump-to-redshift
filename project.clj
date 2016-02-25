@@ -10,4 +10,5 @@
                        :jvm-opts ["-Xms4g" "-Xmx4g" "-server"]}
              :user {:plugins [[com.jakemccrary/lein-test-refresh "0.12.0"]]}
              :dev {:global-vars {*warn-on-reflection* true
-                                 *unchecked-math* :warn-on-boxed}}})
+                                 *unchecked-math* :warn-on-boxed}
+                   :resource-paths ["dummy-data"]}})
