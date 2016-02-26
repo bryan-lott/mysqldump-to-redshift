@@ -36,12 +36,14 @@
   (let [in (first args)
         out (second args)
         size (file-size in)]
-    (progress/with-file-progress out :filesize size
-      (with-open [r (clojure.java.io/reader in)
-                  w (clojure.java.io/writer out)]
-        (->> (line-seq r)
-             (filter #(s/starts-with? % "INSERT INTO "))
-             (pmap extract-values)
-             (flatten)
-             (pmap fix-format)
-             (stream-lines-out! w))))))
+    (if (not= in out)
+      (progress/with-file-progress out :filesize size
+        (with-open [r (clojure.java.io/reader in)
+                    w (clojure.java.io/writer out)]
+          (->> (line-seq r)
+               (filter #(s/starts-with? % "INSERT INTO "))
+               (pmap extract-values)
+               (flatten)
+               (pmap fix-format)
+               (stream-lines-out! w))))
+      (println "Infile must not match outfile."))))
