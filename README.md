@@ -24,7 +24,7 @@ Copy the prebuilt jar file in target to the target machine and execute according
 
 ## Usage
 
-    $ java -jar mysqldump-to-redshift-0.3.0-standalone.jar [mysql dump file] [output_file]
+    $ java -jar mysqldump-to-redshift.jar [mysql dump file] [output_file]
 
 Please note: This will overwrite `output_file`.
 
@@ -45,9 +45,9 @@ Remember to add the `GZIP` parameter if you've gzipped the file before loading t
 
 ## Examples
 
-    $ java -jar mysqldump-to-redshift-0.3.0-standalone.jar mysqldump_table.sql redshift_import.tsv
+    $ java -jar mysqldump-to-redshift.jar mysqldump_table.sql redshift_import.tsv
 
-    $ java -jar mysqldump-to-redshift-0.3.0-standalone.jar mysqldump_table.sql redshift_import.tsv && gzip redshift_import.tsv && s3cmd put redshift_import.tsv.gz s3://your-bucket
+    $ java -jar mysqldump-to-redshift.jar mysqldump_table.sql redshift_import.tsv && gzip redshift_import.tsv && s3cmd put redshift_import.tsv.gz s3://your-bucket
 
 ## Warnings
 
