@@ -47,7 +47,9 @@ Remember to add the `GZIP` parameter if you've gzipped the file before loading t
 
     $ java -jar mysqldump-to-redshift.jar mysqldump_table.sql redshift_import.tsv
 
-    $ java -jar mysqldump-to-redshift.jar mysqldump_table.sql redshift_import.tsv && gzip redshift_import.tsv && s3cmd put redshift_import.tsv.gz s3://your-bucket
+    $ java -jar mysqldump-to-redshift.jar mysqldump_table.sql redshift_import.tsv && gzip redshift_import.tsv && s3cmd put redshift_import.tsv s3://your-bucket
+
+    $ java -jar mysqldump-to-redshift.jar mysqldump_table.sql redshift_import.tsv && gzip redshift_import.tsv && gzip redshift_import.tsv && s3cmd put redshift_import.tsv.gz s3://your-bucket
 
 ## Warnings
 
