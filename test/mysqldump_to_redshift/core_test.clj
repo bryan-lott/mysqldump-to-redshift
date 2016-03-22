@@ -41,5 +41,3 @@
   (testing "extract-values parens in quotes"
     (is (= (extract-values "insert into stuff values (\"(a)\"),(b, c, d);")
            ["\"(a)\"" "b, c, d"]))))
-
-

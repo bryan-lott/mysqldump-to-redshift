@@ -20,8 +20,8 @@
   [s]
   (-> s
       (s/replace #"NULL(?=([^\"']*[\"'][^\"']*[\"'])*[^\"']*$)" "")
-      (s/replace "'", "")
       (s/replace #",(?=([^\"']*[\"'][^\"']*[\"'])*[^\"']*$)", (str \tab))
+      (s/replace "'", "")
       (s/replace "\\\"" "\"")))
 
 (defn extract-values
