@@ -46,4 +46,5 @@
                (flatten)
                (pmap fix-format)
                (stream-lines-out! w))))
-      (println "Infile must not match outfile."))))
+      (println "Infile must not match outfile."))
+    (shutdown-agents)))
